@@ -1,5 +1,6 @@
 import LoginScreen from "../features/auth/screens/Login";
 import RegisterScreen from "../features/auth/screens/Register";
+import ChatRoomScreen from "../features/chat/screens/ChatRoomScreen";
 import HomeScreen from "../features/home/screens/Home";
 import ColorSchemeScreen from "../features/settings/screens/ColorScheme";
 import SettingsScreen from "../features/settings/screens/Settings";
@@ -12,7 +13,7 @@ import {
   StaticParamList,
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
+import React from "react";
 const SettingsStack = createNativeStackNavigator({
   screens: {
     settings: {
@@ -42,6 +43,22 @@ const AppTabs = createBottomTabNavigator({
         tabBarIcon: ({ color }) => (
           <Fontawesome
             name="home"
+            size={24}
+            color={color}
+            style={{ marginBottom: -3 }}
+          />
+        ),
+      },
+    },
+    chat: {
+      screen: ChatRoomScreen,
+      options: {
+        headerShown: false,
+        animation: "none",
+        title: "Locker Room",
+        tabBarIcon: ({ color }) => (
+          <Fontawesome
+            name="wechat"
             size={24}
             color={color}
             style={{ marginBottom: -3 }}

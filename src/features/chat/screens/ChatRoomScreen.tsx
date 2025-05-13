@@ -1,6 +1,7 @@
-import React from 'react';
-import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native';
+import * as React from 'react';
+import { View, Text, FlatList, TouchableOpacity, Image, SafeAreaView } from 'react-native';
 import { useColorScheme } from 'nativewind';
+import { Ionicons } from "@expo/vector-icons";
 
 type Chat = {
   id: string;
@@ -15,7 +16,7 @@ type Chat = {
 const mockChats: Chat[] = [
   {
     id: '1',
-    name: 'John Doe',
+    name: 'Jane Doe',
     isGroup: false,
     lastMessage: 'Hey, are we meeting today?',
     time: '10:32 AM',
@@ -25,7 +26,7 @@ const mockChats: Chat[] = [
     id: '2',
     name: 'Family Group',
     isGroup: true,
-    lastMessage: 'Mom: Don’t forget to bring the groceries.',
+    lastMessage: "Mom: Don't forget to bring the groceries.",
     time: '9:45 AM',
   },
   {
@@ -48,10 +49,23 @@ const mockChats: Chat[] = [
 export default function ChatroomList() {
   const { colorScheme } = useColorScheme();
 
+  const renderTopBar = () => (
+    <View className="flex-row items-center justify-between border-b border-gray-200 bg-white px-4 py-3 dark:border-gray-800 dark:bg-gray-900">
+      <View className="flex-row items-center">
+        <Text className="text-2xl font-extrabold text-gray-900 dark:text-white">
+          Messages
+        </Text>
+      </View>
+      <TouchableOpacity className="p-2">
+        <Ionicons name="create-outline" size={24} color={colorScheme === 'dark' ? '#fff' : '#666'} />
+      </TouchableOpacity>
+    </View>
+  );
+
   const renderItem = ({ item }: { item: Chat }) => (
-    <TouchableOpacity className="flex-row items-center px-4 py-3 border-b border-gray-200 dark:border-gray-700">
+    <TouchableOpacity className="flex-row items-center px-4 py-3 border-b border-gray-200 dark:border-gray-800">
       {/* Avatar */}
-      <View className="w-12 h-12 rounded-full bg-gray-300 dark:bg-gray-600 justify-center items-center mr-4">
+      <View className="w-12 h-12 rounded-full bg-gray-300 dark:bg-gray-700 justify-center items-center mr-4">
         <Text className="text-lg text-white font-semibold">
           {item.name
             .split(' ')
@@ -64,14 +78,14 @@ export default function ChatroomList() {
       {/* Chat Info */}
       <View className="flex-1">
         <View className="flex-row justify-between items-center">
-          <Text className="text-base font-semibold text-black dark:text-white">
+          <Text className="text-base font-semibold text-gray-900 dark:text-white">
             {item.name}
           </Text>
           <Text className="text-xs text-gray-500 dark:text-gray-400">{item.time}</Text>
         </View>
         <View className="flex-row justify-between items-center">
           <Text
-            className="text-sm text-gray-600 dark:text-gray-400"
+            className="text-sm text-gray-600 dark:text-gray-300"
             numberOfLines={1}
             ellipsizeMode="tail"
           >
@@ -88,13 +102,14 @@ export default function ChatroomList() {
   );
 
   return (
-    <View className="flex-1 bg-white dark:bg-black">
+    <SafeAreaView className="flex-1 bg-gray-50 dark:bg-gray-900 pt-12">
+      {renderTopBar()}
       <FlatList
         data={mockChats}
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
         contentContainerStyle={{ paddingBottom: 10 }}
       />
-    </View>
+    </SafeAreaView>
   );
 }
