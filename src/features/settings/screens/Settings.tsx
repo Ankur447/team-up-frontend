@@ -1,3 +1,4 @@
+import * as React from "react";
 import { SettingsParamList } from "../../../app/router";
 import { Buttons } from "../components/Buttons";
 import { SettingsButton } from "../type/SettingsButton";

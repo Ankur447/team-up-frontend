@@ -3,7 +3,7 @@ import { SettingsButton } from "../type/SettingsButton";
 import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
 import { Appearance, ScrollView } from "react-native";
-
+import React from "react";
 const ColorSchemeButtons: SettingsButton[] = [
   {
     id: "light",
