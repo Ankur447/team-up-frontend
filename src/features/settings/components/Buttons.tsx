@@ -21,7 +21,7 @@ export function Buttons({
   const colorScheme = useColorScheme();
 
   return (
-    <View className="m-4 flex-1 items-center justify-center rounded-lg bg-slate-100 dark:bg-zinc-900">
+    <View className="m-4 flex-1 items-center justify-center rounded-lg bg-slate-100 dark:bg-gray-900">
       {buttons.map((button, i) => (
         <TouchableOpacity
           key={i}
@@ -33,12 +33,12 @@ export function Buttons({
               <Fontawesome
                 name={button.icon}
                 size={14}
-                color={colorScheme === "light" ? "black" : "white"}
+                color={colorScheme === "light" ? "black" : "#fff"}
               />
             )}
             <Text
               className={cx("flex-1 py-4 text-lg", {
-                "border-b border-b-slate-200 dark:border-b-zinc-800":
+                "border-b border-b-slate-200 dark:border-b-gray-800":
                   i !== buttons.length - 1,
               })}
             >
@@ -48,14 +48,14 @@ export function Buttons({
               <Fontawesome
                 name="chevron-right"
                 size={14}
-                color={colorScheme === "light" ? "black" : "white"}
+                color={colorScheme === "light" ? "black" : "#fff"}
               />
             )}
             {button.action === "checked" && (
               <Fontawesome
                 name="check"
                 size={14}
-                color={colorScheme === "light" ? "black" : "white"}
+                color={colorScheme === "light" ? "black" : "#fff"}
               />
             )}
           </View>

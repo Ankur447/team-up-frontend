@@ -16,6 +16,12 @@ const AppButtons: SettingsButton[] = [
     action: "link",
   },
   {
+    id: "theme",
+    name: "Profile",
+    icon: "sun-o",
+    action: "link",
+  },
+  {
     id: "log-out",
     name: "Log Out",
     icon: "sign-out",
