@@ -151,6 +151,8 @@ declare global {
   }
 }
 
+export type { RootStackParamList };
+
 const Navigation = createStaticNavigation(RootStack);
 
 export default Navigation;

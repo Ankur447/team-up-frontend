@@ -9,6 +9,11 @@ import {
   Image,
   SafeAreaView,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import type { RootStackParamList } from "../../../app/router";
+
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 // Mock data
 const trendingGames = [
@@ -75,10 +80,17 @@ const yourEvents = [
 
 const HomeScreen = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const navigation = useNavigation<NavigationProp>();
 
   const renderTopBar = () => (
     <View className="flex-row items-center justify-between border-b border-gray-200 bg-white px-4 py-3 dark:border-gray-800 dark:bg-gray-900">
-      <View className="flex-row items-center">
+      <TouchableOpacity 
+        onPress={() => navigation.navigate("app", {
+          screen: "settingsStack",
+          params: { screen: "profile" },
+        })}
+        className="flex-row items-center"
+      >
         <Image
           source={{
             uri: "https://images.unsplash.com/photo-1517649763962-0c623066013b?w=100&h=100&fit=crop",
@@ -86,9 +98,9 @@ const HomeScreen = () => {
           className="h-10 w-10 rounded-full"
         />
         <Text className="ml-3 text-2xl font-extrabold text-gray-900 dark:text-white">
-          GameConnect
+          Team UP, Bitches!
         </Text>
-      </View>
+      </TouchableOpacity>
       <TouchableOpacity className="p-2">
         <Ionicons name="notifications-outline" size={24} color="#666" />
       </TouchableOpacity>
@@ -213,7 +225,7 @@ const HomeScreen = () => {
   );
 
   return (
-    <SafeAreaView className="flex-1 bg-gray-50 dark:bg-gray-900 pt-12">
+    <SafeAreaView className="flex-1 bg-gray-50 dark:bg-gray-900 pt-16">
       {renderTopBar()}
       <ScrollView showsVerticalScrollIndicator={false}>
         {renderSearchBar()}
