@@ -2,6 +2,7 @@ import LoginScreen from "../features/auth/screens/Login";
 import RegisterScreen from "../features/auth/screens/Register";
 import ChatRoomScreen from "../features/chat/screens/ChatRoomScreen";
 import HomeScreen from "../features/home/screens/Home";
+import ProfileScreen from "../features/settings/screens/Profile";
 import ColorSchemeScreen from "../features/settings/screens/ColorScheme";
 import SettingsScreen from "../features/settings/screens/Settings";
 import SplashScreen from "../features/splash/screens/Splash";
@@ -26,6 +27,12 @@ const SettingsStack = createNativeStackNavigator({
       screen: ColorSchemeScreen,
       options: {
         title: "App Theme",
+      },
+    },
+    profile: {
+      screen: ProfileScreen,
+      options: {
+        title: "Profile",
       },
     },
   },

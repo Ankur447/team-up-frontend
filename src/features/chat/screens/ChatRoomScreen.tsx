@@ -1,6 +1,13 @@
 import * as React from 'react';
-import { View, Text, FlatList, TouchableOpacity, Image, SafeAreaView } from 'react-native';
-import { useColorScheme } from 'nativewind';
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  Image,
+  SafeAreaView,
+} from "react-native";
+import { useColorScheme } from "nativewind";
 import { Ionicons } from "@expo/vector-icons";
 
 type Chat = {

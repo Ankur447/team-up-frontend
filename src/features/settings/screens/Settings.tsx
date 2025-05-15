@@ -16,7 +16,7 @@ const AppButtons: SettingsButton[] = [
     action: "link",
   },
   {
-    id: "theme",
+    id: "profile",
     name: "Profile",
     icon: "sun-o",
     action: "link",
@@ -48,6 +48,9 @@ export default function SettingsScreen() {
     switch (id) {
       case "theme":
         navigation.navigate("colorScheme");
+        break;
+      case "profile":
+        navigation.navigate("profile");
         break;
       case "log-out":
         signOut(auth);
